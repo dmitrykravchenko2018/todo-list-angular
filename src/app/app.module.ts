@@ -7,6 +7,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { FilterFormComponent } from './components/filter-form/filter-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FilterFormComponent } from './components/filter-form/filter-form.compon
     FilterFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

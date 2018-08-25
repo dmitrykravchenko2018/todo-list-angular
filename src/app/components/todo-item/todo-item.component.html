@@ -1,3 +1,4 @@
-<p>
-  todo-item works!
-</p>
+<div class="todo" (dblclick)="onEdit()">
+  <span class="badge">{{todo.id}}</span> {{todo.title}}
+</div>
+<button (click)="onDelete(todo)">x</button>

@@ -1,3 +1,16 @@
-<p>
-  add-form works!
-</p>
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  
+    <label>
+      Title:
+      <input type="text" formControlName="title" required>
+    </label>
+  
+    <label>
+      Description:
+      <input type="text" formControlName="description" required>
+    </label>
+    <button type="submit" [disabled]="addForm.invalid">Submit</button>
+  </form>
+  <p>
+    Form Status: {{ addForm.status }}
+  </p>

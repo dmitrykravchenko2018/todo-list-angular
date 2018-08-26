@@ -7,7 +7,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { FilterFormComponent } from './components/filter-form/filter-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

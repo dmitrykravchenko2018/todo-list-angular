@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-filter-form',
@@ -6,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter-form.component.css']
 })
 export class FilterFormComponent implements OnInit {
+  @Input()
+  public dates: string[];
 
-  constructor() { }
+  public filterForm: FormGroup = this.fb.group({
+    title: ['', Validators.required],
+    date: ['', Validators.required],
+  });
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
   }

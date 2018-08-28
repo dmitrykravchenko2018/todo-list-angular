@@ -10,33 +10,28 @@ import { FormBuilder } from '@angular/forms';
 })
 export class TodoListComponent implements OnInit {
 
-  private todoList: Todo[] = [];
+  public todoList: Todo[];
 
-  private selectedTodo: Todo;
+  public selectedTodo: Todo;
 
-  constructor(private todoService: TodoService) { }
-
-  ngOnInit() {
-    this.getTodoList();
+  constructor(private todoService: TodoService) {
   }
 
-  public getTodoList(): void {
-    this.todoService.getTodoList()
-    .subscribe((todoList: Todo[]) => {
-        this.todoList = todoList;
-    });
+  public ngOnInit(): void {
+    this.todoList = this.todoService.getTodoList();
   }
 
   public onSelect(todo: Todo): void {
     this.selectedTodo = todo;
   }
 
-  public onDelete(todo: Todo): void {
-
-    console.log('deleting todo', todo);
+  public deleteTodo(todo: Todo): void {
+    console.log('Todo-list component delete:', todo);
+    this.todoService.deleteTodo(todo);
   }
 
-  public onEdit(todo: Todo): void {
-    console.log('editing todo', todo);
+  public editTodo(todo: Todo): void {
+    // this.todoService.updateTodo(todo);
+    this.todoService.editTodo(todo);
   }
 }

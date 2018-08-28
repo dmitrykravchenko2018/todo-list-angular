@@ -1,4 +1,10 @@
-<div (dblclick)="onEdit()">
-    <span class="badge">{{todo.id}}</span> {{todo.title}}
-</div>
-  <button class="delete" (click)="onDelete(todo)">x</button>
+<div *ngIf="todo">
+    <h2>{{ todo.title }}</h2>
+    <div><span>id: </span>{{todo.id}}</div>
+    <div><span>description: </span>{{todo.description}}</div>
+    <div><span>created at: </span>{{todo.createdAt}}</div>
+    <button (click)="onDelete(todo)">delete</button>
+    <button (click)="onEdit(todo)">edit</button>
+  
+  </div>
+  

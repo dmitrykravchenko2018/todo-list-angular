@@ -1,3 +1,12 @@
 <p>
-  filter-form works!
+  <strong>Filter by:</strong>
 </p>
+<form [formGroup]="filterForm">
+  <label>
+    Titile:
+    <input type="text" formControlName="title" required>
+  </label>
+  <select id="date" formControlName="date">
+    <option *ngFor="let d of dates" [ngValue]="d">{{ d }}</option>
+  </select>
+</form>

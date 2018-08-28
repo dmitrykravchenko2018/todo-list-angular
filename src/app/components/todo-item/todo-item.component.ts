@@ -8,25 +8,25 @@ import { Todo } from '../../entities/todo';
 })
 export class TodoItemComponent implements OnInit {
   @Input()
-  private todo: Todo;
+  public todo: Todo;
 
   @Output()
-  private delete: EventEmitter<Todo> = new EventEmitter<Todo>();
+  public delete: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   @Output()
-  private edit: EventEmitter<Todo> = new EventEmitter<Todo>();
+  public edit: EventEmitter<Todo> = new EventEmitter<Todo>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  public onEdit(todo: Todo): void {
+    this.edit.emit(todo);
   }
 
   public onDelete(todo: Todo): void {
     this.delete.emit(todo);
   }
-
-  public onEdit(): void {
-    this.edit.emit(this.todo);
-  }
-
 }

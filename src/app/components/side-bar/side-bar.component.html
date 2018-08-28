@@ -1,5 +1,2 @@
-<p>
-  side-bar works!
-</p>
-<app-add-form></app-add-form>
-<app-filter-form></app-filter-form>
+<app-add-form [data]="editableItem" (submit)="todoService.addTodo($event)"></app-add-form>
+<app-filter-form [dates]="dateList"></app-filter-form>

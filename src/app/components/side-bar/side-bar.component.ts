@@ -8,17 +8,29 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
+
   public dateList: Set<string>;
   public editableItem: Todo;
+  private editingItem: boolean;
 
-  constructor(public todoService: TodoService) { }
+  constructor(public todoService: TodoService) {
+  }
 
   ngOnInit() {
     this.dateList = this.todoService.getDatesList();
     this.todoService.getEditableItem().subscribe((item: Todo) => {
       console.log('subscribe: ', item);
       this.editableItem = item;
+      this.editingItem = true;
     });
   }
 
+  public handleSubmit(todo: Todo): void {
+    if (this.editingItem) {
+      this.todoService.updateTodo(todo);
+      this.editingItem = !this.editingItem;
+    } else {
+      this.todoService.addTodo(todo);
+    }
+  }
 }

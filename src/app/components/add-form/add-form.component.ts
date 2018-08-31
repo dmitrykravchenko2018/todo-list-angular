@@ -11,14 +11,13 @@ export class AddFormComponent implements OnInit {
 
   @Input()
   public set data(item: Todo) {
-    console.log('Setter: ', item);
     if (item) {
       this.addForm.patchValue({ id: item.id, title: item.title, description: item.description });
     }
   }
 
   @Output()
-  public submit: EventEmitter<Todo> = new EventEmitter<Todo>();
+  public submitForm: EventEmitter<Todo> = new EventEmitter<Todo>();
 
   public addForm: FormGroup = this.fb.group({
     id: null,
@@ -47,7 +46,8 @@ export class AddFormComponent implements OnInit {
     if (!!title && !!description) {
       console.log('title: ', title);
       console.log('description: ', description);
-      this.submit.emit(this.creteOrEditTodo(id, title, description));
+      const newId: number = id ? id : Math.floor(Math.random() * 100);
+      this.submitForm.emit(this.creteOrEditTodo(newId, title, description));
     }
     this.addForm.reset();
     this.addForm.markAsPristine();

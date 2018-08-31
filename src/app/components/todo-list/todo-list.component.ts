@@ -10,15 +10,12 @@ import { FormBuilder } from '@angular/forms';
 })
 export class TodoListComponent implements OnInit {
 
-  public todoList: Todo[];
-
   public selectedTodo: Todo;
 
-  constructor(private todoService: TodoService) {
+  constructor(public todoService: TodoService) {
   }
 
   public ngOnInit(): void {
-    this.todoList = this.todoService.getTodoList();
   }
 
   public onSelect(todo: Todo): void {

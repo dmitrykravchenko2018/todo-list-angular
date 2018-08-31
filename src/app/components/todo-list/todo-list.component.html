@@ -1,6 +1,6 @@
 <h2>My Todo's</h2>
 <ul>
-  <li *ngFor="let todo of todoList"
+  <li *ngFor="let todo of todoService.todoList"
       [class.selected]="todo === selectedTodo"
       (click)="onSelect(todo)">
     <app-todo-item [todo]="todo" (delete)="deleteTodo($event)" (edit)="editTodo($event)"></app-todo-item>

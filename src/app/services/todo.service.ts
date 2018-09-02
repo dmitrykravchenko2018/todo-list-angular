@@ -10,13 +10,13 @@ export class TodoService {
 
   private todos: Todo[] = TODO_LIST;
 
+  private filteredTodos: Subject<Todo[]> = new Subject<Todo[]>();
+
   private editItem: Subject<Todo> = new Subject<Todo>();
 
   constructor() {
-  }
-
-  public get todoList(): Observable<Todo[]> {
-    return of(this.todos);
+    console.log('initing todos');
+    this.editTodoList(this.todos);
   }
 
   public getDatesList(): Set<string> {
@@ -25,12 +25,6 @@ export class TodoService {
       dateList.add(item.createdAt);
     });
     return dateList;
-  }
-
-  public getTodo(id: number): Todo {
-    return this.todos.find((item: Todo) => {
-      return (item.id === id);
-    });
   }
 
   public addTodo(todo: Todo): void {
@@ -62,5 +56,21 @@ export class TodoService {
 
   public getEditableItem(): Observable<Todo> {
     return this.editItem.asObservable();
+  }
+
+  public editTodoList(todos: Todo[]): void {
+    this.filteredTodos.next(todos);
+  }
+
+  public getTodoList(): Observable<Todo[]> {
+    return this.filteredTodos.asObservable();
+  }
+
+  public filterTodo(todo: {title: string, date: string}): void {
+    this.editTodoList(this.todos.filter((t: Todo) => {
+      if (t.createdAt.toLowerCase().indexOf(todo.date) !== -1) {
+        return t.title.toLowerCase().indexOf(todo.title) !== -1;
+      }
+    }));
   }
 }

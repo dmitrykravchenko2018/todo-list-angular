@@ -1,5 +1,6 @@
 import {Todo} from '../../dto/todo';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,21 +9,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  @Input()
   public todoList: Todo[];
-
-  @Output()
-  public delete: EventEmitter<Todo> = new EventEmitter<Todo>();
-
-  @Output()
-  public edit: EventEmitter<Todo> = new EventEmitter<Todo>();
-
   public selectedTodo: Todo;
 
-  constructor() {
+  constructor(private todoService: TodoService) {
   }
 
   public ngOnInit(): void {
+    this.todoService.getTodoList().subscribe((items: Todo[]) => {
+      console.log('subscribe:', items);
+      this.todoList = items;
+    });
   }
 
   public onSelect(todo: Todo): void {
@@ -31,11 +28,11 @@ export class TodoListComponent implements OnInit {
 
   public deleteTodo(todo: Todo): void {
     console.log('Todo-list component delete:', todo);
-    this.delete.emit(todo);
+    this.todoService.deleteTodo(todo);
   }
 
   public editTodo(todo: Todo): void {
     // this.todoService.updateTodo(todo);
-    this.delete.emit(todo);
+    this.todoService.editTodo(todo);
   }
 }

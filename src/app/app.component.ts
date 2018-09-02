@@ -9,6 +9,6 @@ import { TodoService } from './services/todo.service';
 export class AppComponent {
   title = 'todo-list-angular';
 
-  constructor(public todoService: TodoService) {
+  constructor() {
   }
 }

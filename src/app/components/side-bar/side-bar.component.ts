@@ -34,5 +34,7 @@ export class SideBarComponent implements OnInit {
     }
   }
 
-  public handleFilter(todo: {title: string, date: string}): void {}
+  public handleFilter(todo: {title: string, date: string}): void {
+    this.todoService.filterTodo(todo);
+  }
 }

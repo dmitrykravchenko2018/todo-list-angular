@@ -2,11 +2,17 @@
   <strong>Filter by:</strong>
 </p>
 <form [formGroup]="filterForm">
-  <label>
-    Titile:
-    <input type="text" formControlName="title" required>
-  </label>
-  <select id="date" formControlName="date">
-    <option *ngFor="let d of dates" [ngValue]="d">{{ d }}</option>
-  </select>
+  <div>
+    <label>
+      Titile:
+      <input type="text" formControlName="title" required>
+    </label>
+  </div>
+  <div *ngIf="dates">
+    <label for="date-select" >Date: </label>
+    <select id="date-select" formControlName="date" (change)="submitForm(filterForm)">
+      <option [value]="''"></option>
+      <option *ngFor="let d of dates" [ngValue]="d">{{ d }}</option>
+    </select>
+  </div>
 </form>

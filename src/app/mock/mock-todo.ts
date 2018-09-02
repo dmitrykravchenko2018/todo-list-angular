@@ -1,4 +1,4 @@
-import {Todo} from '../entities/todo';
+import {Todo} from '../dto/todo';
 
 export const TODO_LIST: Todo[] = [
     {id: 1, title: 'first', description: 'fsdf', createdAt: '2018-24-08'},

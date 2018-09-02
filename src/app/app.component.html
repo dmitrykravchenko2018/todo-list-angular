@@ -1,3 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-side-bar></app-side-bar>
-<app-todo-list></app-todo-list>
+<app-todo-list [todoList]="todoService.todoList | async" 
+    (edit)="todoService.editTodo($event)" 
+    (delete)="todoService.editTodo($event)"></app-todo-list>

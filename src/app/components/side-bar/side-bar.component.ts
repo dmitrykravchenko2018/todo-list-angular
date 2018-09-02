@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../../entities/todo';
+import { Todo } from '../../dto/todo';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -33,4 +33,6 @@ export class SideBarComponent implements OnInit {
       this.todoService.addTodo(todo);
     }
   }
+
+  public handleFilter(todo: {title: string, date: string}): void {}
 }

@@ -1,4 +1,4 @@
-import {Todo} from '../entities/todo';
+import {Todo} from '../dto/todo';
 import { Injectable } from '@angular/core';
 import { TODO_LIST } from '../mock/mock-todo';
 import { Subject, Observable, of } from 'rxjs';
@@ -15,8 +15,8 @@ export class TodoService {
   constructor() {
   }
 
-  public get todoList(): Todo[] {
-    return this.todos;
+  public get todoList(): Observable<Todo[]> {
+    return of(this.todos);
   }
 
   public getDatesList(): Set<string> {

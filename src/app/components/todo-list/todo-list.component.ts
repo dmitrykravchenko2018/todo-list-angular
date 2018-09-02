@@ -1,7 +1,5 @@
-import {Todo} from '../../entities/todo';
-import { Component, OnInit } from '@angular/core';
-import { TodoService } from '../../services/todo.service';
-import { FormBuilder } from '@angular/forms';
+import {Todo} from '../../dto/todo';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,9 +8,18 @@ import { FormBuilder } from '@angular/forms';
 })
 export class TodoListComponent implements OnInit {
 
+  @Input()
+  public todoList: Todo[];
+
+  @Output()
+  public delete: EventEmitter<Todo> = new EventEmitter<Todo>();
+
+  @Output()
+  public edit: EventEmitter<Todo> = new EventEmitter<Todo>();
+
   public selectedTodo: Todo;
 
-  constructor(public todoService: TodoService) {
+  constructor() {
   }
 
   public ngOnInit(): void {
@@ -24,11 +31,11 @@ export class TodoListComponent implements OnInit {
 
   public deleteTodo(todo: Todo): void {
     console.log('Todo-list component delete:', todo);
-    this.todoService.deleteTodo(todo);
+    this.delete.emit(todo);
   }
 
   public editTodo(todo: Todo): void {
     // this.todoService.updateTodo(todo);
-    this.todoService.editTodo(todo);
+    this.delete.emit(todo);
   }
 }

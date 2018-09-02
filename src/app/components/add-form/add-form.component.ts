@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Todo } from '../../entities/todo';
+import { Todo } from '../../dto/todo';
 
 @Component({
   selector: 'app-add-form',
@@ -35,7 +35,7 @@ export class AddFormComponent implements OnInit {
     const trimDescription = description.trim();
 
     const date: Date = new Date();
-    const normalizeDate: string = `${date.getFullYear()}-${date.getDay()}-${date.getMonth()}`;
+    const normalizeDate: string = `${date.getFullYear()}-${date.getDate()}-${date.getMonth()}`;
     const newId: number = id ? id : Math.floor(Math.random() * 100);
     return new Todo(id, title, description, normalizeDate);
   }

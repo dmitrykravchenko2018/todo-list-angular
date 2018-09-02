@@ -1,2 +1,2 @@
 <app-add-form [data]="editableItem" (submitForm)="handleSubmit($event)"></app-add-form>
-<app-filter-form [dates]="dateList"></app-filter-form>
+<app-filter-form [dates]="dateList" (filterTerm)="handleFilter($event)"></app-filter-form>

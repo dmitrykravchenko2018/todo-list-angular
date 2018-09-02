@@ -8,6 +8,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { FilterFormComponent } from './components/filter-form/filter-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TodoService } from './services/todo.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

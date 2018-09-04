@@ -10,7 +10,7 @@ import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 })
 export class FilterFormComponent implements OnInit, OnDestroy {
   @Input()
-  public dates: string[];
+  public dates: Set<string>;
 
   @Output()
   public filterTerm: EventEmitter<{title: string, date: string}> = new EventEmitter();

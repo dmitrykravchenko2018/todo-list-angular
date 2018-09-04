@@ -9,17 +9,12 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodoListComponent implements OnInit {
 
-  public todoList: Todo[];
   public selectedTodo: Todo;
 
-  constructor(private todoService: TodoService) {
+  constructor(public todoService: TodoService) {
   }
 
   public ngOnInit(): void {
-    this.todoService.getTodoList().subscribe((items: Todo[]) => {
-      console.log('subscribe:', items);
-      this.todoList = items;
-    });
   }
 
   public onSelect(todo: Todo): void {

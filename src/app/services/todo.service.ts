@@ -8,15 +8,28 @@ import { Subject, Observable, of } from 'rxjs';
 })
 export class TodoService {
 
-  private todos: Todo[] = TODO_LIST;
+  private todos: Todo[] = <Todo[]>TODO_LIST;
 
-  private filteredTodos: Subject<Todo[]> = new Subject<Todo[]>();
+  private titleTerm = '';
+
+  private dateTerm = '';
 
   private editItem: Subject<Todo> = new Subject<Todo>();
 
   constructor() {
-    console.log('initing todos');
-    this.editTodoList(this.todos);
+  }
+
+  public get todoList(): Todo[] {
+    console.log('todoList: ', this.todos);
+    return this.todos;
+  }
+
+  public get titleForFilter(): string {
+    return this.titleTerm;
+  }
+
+  public get dateForFilter(): string {
+    return this.dateTerm;
   }
 
   public getDatesList(): Set<string> {
@@ -28,7 +41,8 @@ export class TodoService {
   }
 
   public addTodo(todo: Todo): void {
-    this.todos.push(todo);
+    console.log('adding todo: ', todo);
+    this.todos = [todo, ...this.todos];
   }
 
   public updateTodo(todo: Todo): void {
@@ -58,19 +72,8 @@ export class TodoService {
     return this.editItem.asObservable();
   }
 
-  public editTodoList(todos: Todo[]): void {
-    this.filteredTodos.next(todos);
-  }
-
-  public getTodoList(): Observable<Todo[]> {
-    return this.filteredTodos.asObservable();
-  }
-
   public filterTodo(todo: {title: string, date: string}): void {
-    this.editTodoList(this.todos.filter((t: Todo) => {
-      if (t.createdAt.toLowerCase().indexOf(todo.date) !== -1) {
-        return t.title.toLowerCase().indexOf(todo.title) !== -1;
-      }
-    }));
+    this.titleTerm = todo.title;
+    this.dateTerm = todo.date;
   }
 }

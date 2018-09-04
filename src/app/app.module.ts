@@ -9,6 +9,9 @@ import { AddFormComponent } from './components/add-form/add-form.component';
 import { FilterFormComponent } from './components/filter-form/filter-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoService } from './services/todo.service';
+import { DateFilterPipe } from './pipes/date-filter.pipe';
+import { TitleFilterPipe } from './pipes/title-filter.pipe';
+import { ToSetPipe } from './pipes/to-set.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { TodoService } from './services/todo.service';
     TodoItemComponent,
     SideBarComponent,
     AddFormComponent,
-    FilterFormComponent
+    FilterFormComponent,
+    DateFilterPipe,
+    TitleFilterPipe,
+    ToSetPipe
   ],
   imports: [
     BrowserModule,

@@ -1,2 +1,4 @@
-<app-add-form [data]="editableItem" (submitForm)="handleSubmit($event)"></app-add-form>
-<app-filter-form [dates]="todoService.todoList | toSet: 'createdAt'" (filterTerm)="handleFilter($event)"></app-filter-form>
+<div class="side-bar">
+  <app-add-form [data]="editableItem" (submitForm)="handleSubmit($event)"></app-add-form>
+  <app-filter-form [dates]="todoService.todoList | toSet: 'createdAt'" (filterTerm)="handleFilter($event)"></app-filter-form>
+</div>

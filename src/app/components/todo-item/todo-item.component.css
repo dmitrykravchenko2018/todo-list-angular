@@ -8,6 +8,7 @@
     list-style-type: none;
     padding: 0;
     width: 15em;
+
   }
   .todo li {
     cursor: pointer;
@@ -66,4 +67,13 @@
     top: -32px;
     background-color: gray !important;
     color: white;
+  }
+
+  .todo-item {
+    min-width: 200px;
+    padding: 20px;
+    border: solid;
+    border-radius: 5px;
+    border-width: thin;
+    margin: 10px;
   }

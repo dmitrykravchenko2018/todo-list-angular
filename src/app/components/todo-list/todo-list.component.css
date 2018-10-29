@@ -46,3 +46,16 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+
+  .todo-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 20px;
+    min-width: 200px;
+
+  }
+
+  .todo-container > h2 {
+    text-align: center;
+  }

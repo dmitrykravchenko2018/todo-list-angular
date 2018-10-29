@@ -37,7 +37,6 @@ export class AddFormComponent implements OnInit {
 
     const date: Date = new Date();
     const normalizeDate = `${date.getFullYear()}-${date.getDate()}-${date.getMonth()}`;
-    const newId: number = id ? id : Math.floor(Math.random() * 100);
     return new Todo(id, title, description, normalizeDate);
   }
 

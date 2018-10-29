@@ -1,4 +1,4 @@
-<div *ngIf="todo">
+<div *ngIf="todo" class="todo-item">
     <h2>{{ todo.title }}</h2>
     <div><span>id: </span>{{todo.id}}</div>
     <div><span>description: </span>{{todo.description}}</div>
@@ -7,4 +7,3 @@
     <button (click)="onEdit(todo)">edit</button>
   
   </div>
-  
